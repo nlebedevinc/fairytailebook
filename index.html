@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Сказки</title>
+        <base href="./">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"/>
+        <link rel="stylesheet" type="text/css" href="./css/main.css">
+    </head>
+    <body>
+        <header>
+            <h1>Сказки</h1>
+            <p>Какой нибудь мотивирующий подзаголовок</p>
+            <div id="navbar">
+                <ul onclick="selectPage(event)">
+                    <li class="nav-item">Главная</li>
+                    <li class="nav-item">Народные сказки</li>
+                    <li class="nav-item">Авторские сказки</li>
+                </ul>
+            </div>
+        </header>
+        <main>
+            <div id="sidebar">
+                <ul id="sidebar-content" onclick="selectStory(event)">
+                    <li>
+                        <div>
+                            <h3>Белорусские сказки</h3>
+                            <ul class="sublist">
+                                <li class="sublist-item">Андрей всех мудрей</li>
+                                <li class="sublist-item">Вдовий сын</li>
+                                <li class="sublist-item">Волк, собака и кот</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h3>Русские сказки</h3>
+                            <ul class="sublist">
+                                <li class="sublist-item">Андрей всех мудрей</li>
+                                <li class="sublist-item">Вдовий сын</li>
+                                <li class="sublist-item">Волк, собака и кот</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="content"></div>
+        </main>
+        <footer></footer>
+        <script src="scripts/index.js"></script>
+        <script src="scripts/pages.js"></script>
+        <script src="scripts/stories.js"></script>
+    </body>
+</html>
