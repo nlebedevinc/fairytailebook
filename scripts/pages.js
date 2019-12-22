@@ -88,3 +88,12 @@ function findPageByName(pageName) {
     }
     return null;
 }
+
+function firstStoryOnPage(pageName) {
+    for (let i = 0; i < pages.length; ++i) {
+        if (pages[i].name === pageName) {
+            return pages[i].sidebar[0].list[0];
+        }
+    }
+    return null;
+}

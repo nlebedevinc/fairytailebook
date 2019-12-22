@@ -6,6 +6,8 @@ function selectPage(evt) {
 
     // render
     renderPage(page.sidebar);
+    renderFirstStory(pageName);
+
 
     // mark selected
     unmarkAllPages();
@@ -57,6 +59,15 @@ function renderPage(sidebar) {
     }
 }
 
+function renderFirstStory(pageName) {
+    const name = firstStoryOnPage(pageName);
+    const story = findStoryByName(name);
+
+    renderStory(story);
+
+    markActive(name);
+}
+
 function createStoryList(list) {
     const elements = [];
     for (let i = 0; i < list.length; ++i) {
@@ -67,7 +78,7 @@ function createStoryList(list) {
         elements.push(li);
     }
 
-    return elements;
+    return elements;    
 }
 
 function renderStory(story) {
@@ -117,5 +128,18 @@ function unmarkAllItems() {
 
     for (let i = 0; i < items.length; ++i) {
         items[i].classList.remove('active');
+    }
+}
+
+function markActive(storyName) {
+    const items = document.getElementsByClassName('sublist-item');
+
+    for (let i = 0; i < items.length; ++i) {
+        const name = items[i].innerText || items[i].textContent;
+
+        if (storyName === name) {
+            items[i].classList.add('active');
+            break;
+        }
     }
 }
