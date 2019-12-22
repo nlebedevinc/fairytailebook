@@ -1,12 +1,43 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Merriweather", Georgia, Cambria, "Times New Roman", Times, serif;
+    font-kerning: normal;
+    font-weight: 400;
+    font-feature-settings: "kern", "liga", "clig", "calt";
+
     margin: 0 auto;
     max-width: 960px;
     background-color: #fff;
+    color: rgba(0, 0, 0, 0.84);
 }
 
 main {
     margin-top: 60px;
+}
+
+#title {
+    height: 80px;
+}
+
+#title .inline {
+    float: left;
+    margin-left: 15px;
+}
+
+#title img {
+    margin-top: 12px;
+}
+
+#title .author {
+    float: right;
+}
+
+#title .author p {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+#title .author img {
+    border-radius: 50%;
 }
 
 main ul,
@@ -24,10 +55,12 @@ main ul,
 #sidebar {
     float: left;
     padding: 10px;
+    max-width: 300px;
 }
 
 #sidebar .sublist {
     padding-left: 20px;
+    color: rgba(0, 0, 0, 0.54);
 }
 
 .active {
@@ -41,8 +74,17 @@ main ul,
 }
 
 #content {
-    /* margin-top: 10px; */
-    padding: 10px 20px 20px 20px;
+    padding: 10px 20px 10px 10px;
     float: right;
-    width: 580px;
+    width: 590px;
+    line-height: 28px;
+    font-size: 16px;
+}
+
+#content p {
+    font-size: 16px;
+}
+
+#content h1 {
+    font-size: 40px;
 }

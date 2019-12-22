@@ -1,4 +1,3 @@
-// API
 function selectPage(evt) {
     const target = evt.target;
     const pageName = target.innerHTML || target.textContent;
@@ -15,6 +14,11 @@ function selectPage(evt) {
 
 function selectStory(evt) {
     const target = evt.target;
+
+    if (target.tagName !== 'LI') {
+        return;
+    }
+
     const name = target.innerText || target.textContent;
 
     const story = findStoryByName(name);
