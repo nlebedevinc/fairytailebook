@@ -105,6 +105,10 @@ function renderStoryText(parent, text) {
         if (text[i].indexOf('images') !== -1) {
             element = new Image();
             element.src = text[i];
+        } else if (!isNaN(text[i])) {
+            element = document.createElement('H3');
+            const t = document.createTextNode(text[i]);
+            element.appendChild(t);
         } else {
             element = document.createElement('p');
             const t = document.createTextNode(text[i]);
