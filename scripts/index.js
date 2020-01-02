@@ -2,12 +2,17 @@ function selectPage(evt) {
     const target = evt.target;
     const pageName = target.innerHTML || target.textContent;
 
-    const page = findPageByName(pageName);
+    if (pageName === 'Главная') {
+        toggleMainPage(false);
+        // remove all other content
+    } else {
+        toggleMainPage(true);
+        const page = findPageByName(pageName);
 
-    // render
-    renderPage(page.sidebar);
-    renderFirstStory(pageName);
-
+        // render
+        renderPage(page.sidebar);
+        renderFirstStory(pageName);
+    }
 
     // mark selected
     unmarkAllPages();
@@ -31,6 +36,22 @@ function selectStory(evt) {
     // mark selected
     unmarkAllItems();
     target.classList.add('active');
+}
+
+function toggleMainPage(isDisabled) {
+    const homepage = document.getElementById('homepage');
+    const sidebar = document.getElementById('sidebar');
+    const content = document.getElementById('content');
+
+    if (isDisabled) {
+        homepage.classList.add('disabled');
+        sidebar.classList.remove('disabled');
+        content.classList.remove('disabled');
+    } else {
+        homepage.classList.remove('disabled');
+        sidebar.classList.add('disabled');
+        content.classList.add('disabled');
+    }
 }
 
 // render
