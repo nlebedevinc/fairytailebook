@@ -100,6 +100,12 @@ main ul,
     font-size: 16px;
 }
 
+#content .readtime {
+    color: rgba(0, 0, 0, 0.54);
+    font-weight: normal;
+    font-size: 14px;
+}
+
 #content h1 {
     font-size: 40px;
 }

@@ -78,7 +78,7 @@ function createStoryList(list) {
         elements.push(li);
     }
 
-    return elements;    
+    return elements;
 }
 
 function renderStory(story) {
@@ -86,6 +86,9 @@ function renderStory(story) {
     parent.innerHTML = '';
 
     const header = createStoryName(story.name);
+    const subtitle = createStoryReadTime(story);
+
+    header.appendChild(subtitle);
     parent.appendChild(header);
 
     renderStoryText(parent, story.text);
@@ -97,6 +100,16 @@ function createStoryName(name) {
     header.appendChild(text);
 
     return header;
+}
+
+function createStoryReadTime(story) {
+    const time = calcAverageReadingTime(story);
+    const p = document.createElement('p');
+    p.classList.add('readtime');
+    const text = document.createTextNode(`${time} минут чтения`);
+    p.appendChild(text);
+
+    return p;
 }
 
 function renderStoryText(parent, text) {

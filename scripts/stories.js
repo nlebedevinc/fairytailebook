@@ -541,3 +541,14 @@ function findStoryByName(name) {
 
     return null;
 }
+
+function calcAverageReadingTime(story) {
+    const { text } = story;
+
+    let words = 0;
+    for (let i = 0; i < text.length; ++i) {
+        words += text[i].split(' ').length;
+    }
+
+    return Math.round(words / 170);
+}
