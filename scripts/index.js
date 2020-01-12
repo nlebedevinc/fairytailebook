@@ -10,7 +10,7 @@ function selectPage(evt) {
         const page = findPageByName(pageName);
 
         // render
-        renderPage(page.sidebar);
+        renderPage(page);
         renderFirstStory(pageName);
     }
 
@@ -22,7 +22,8 @@ function selectPage(evt) {
 function selectStory(evt) {
     const target = evt.target;
 
-    if (target.tagName !== 'LI') {
+    debugger;
+    if (target.tagName !== 'LI' && (target.tagName !== 'H3' || !target.classList.contains('author-group'))) {
         return;
     }
 
@@ -31,10 +32,12 @@ function selectStory(evt) {
     const story = findStoryByName(name);
 
     // render
-    renderStory(story);
+    renderStory(story, target.tagName === 'H3');
 
     // mark selected
     unmarkAllItems();
+
+    unmarkAllItems('author-group');
     target.classList.add('active');
 }
 
@@ -55,7 +58,8 @@ function toggleMainPage(isDisabled) {
 }
 
 // render
-function renderPage(sidebar) {
+function renderPage(page) {
+    const { name, sidebar } = page;
     const parent = document.getElementById('sidebar-content');
     parent.innerHTML = '';
     
@@ -63,6 +67,10 @@ function renderPage(sidebar) {
         const parentli = document.createElement('li');
         const div = document.createElement('div');
         const h3 = document.createElement('H3');
+
+        if (name.toLowerCase() === 'авторские сказки') {
+            h3.classList.add('author-group');
+        }
         const text = document.createTextNode(sidebar[i].title);
         h3.appendChild(text);
         div.appendChild(h3);
@@ -102,14 +110,16 @@ function createStoryList(list) {
     return elements;
 }
 
-function renderStory(story) {
+function renderStory(story, isAuthor = false) {
     const parent = document.getElementById('content');
     parent.innerHTML = '';
 
     const header = createStoryName(story.name);
 
-    const subtitle = createStoryReadTime(story);
-    header.appendChild(subtitle);
+    if (!isAuthor) {
+        const subtitle = createStoryReadTime(story);
+        header.appendChild(subtitle);
+    }
 
     if (story.audio){
         const audio = createStoryAudio(story.audio);
@@ -176,8 +186,8 @@ function unmarkAllPages() {
     }
 }
 
-function unmarkAllItems() {
-    const items = document.getElementsByClassName('sublist-item');
+function unmarkAllItems(className = 'sublist-item') {
+    const items = document.getElementsByClassName(className);
 
     for (let i = 0; i < items.length; ++i) {
         items[i].classList.remove('active');
