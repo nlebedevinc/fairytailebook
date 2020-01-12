@@ -107,9 +107,16 @@ function renderStory(story) {
     parent.innerHTML = '';
 
     const header = createStoryName(story.name);
-    const subtitle = createStoryReadTime(story);
 
+    const subtitle = createStoryReadTime(story);
     header.appendChild(subtitle);
+
+    if (story.audio){
+        const audio = createStoryAudio(story.audio);
+        header.appendChild(audio);
+        audiojs.create(audio);
+    }
+
     parent.appendChild(header);
 
     renderStoryText(parent, story.text);
@@ -121,6 +128,14 @@ function createStoryName(name) {
     header.appendChild(text);
 
     return header;
+}
+
+function createStoryAudio(link) {
+    const audio = document.createElement('audio');
+    audio.src = link;
+    audio.preload = 'auto';
+
+    return audio;
 }
 
 function createStoryReadTime(story) {
