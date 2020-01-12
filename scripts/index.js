@@ -22,7 +22,6 @@ function selectPage(evt) {
 function selectStory(evt) {
     const target = evt.target;
 
-    debugger;
     if (target.tagName !== 'LI' && (target.tagName !== 'H3' || !target.classList.contains('author-group'))) {
         return;
     }
